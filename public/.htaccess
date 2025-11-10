@@ -1,0 +1,17 @@
+RewriteEngine On
+# Activa mod_rewrite
+
+Options -Indexes
+# Desactiva listado de directorios
+
+ErrorDocument 403 index.php
+# Error 403 va a index.php
+
+RewriteCond %{REQUEST_FILENAME} !-f
+# No es archivo real
+
+RewriteCond %{REQUEST_FILENAME} !-d
+# No es directorio real
+
+RewriteRule ^(.+)$ index.php [NC,L,QSA]
+# Redirige todo a index.php
